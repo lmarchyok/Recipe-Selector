@@ -8,27 +8,6 @@ engine = create_engine('sqlite:///recipes.db', connect_args={"check_same_thread"
 metadata = MetaData()
 Base = declarative_base()
 
-recipes = Table(
-    "recipes",
-    metadata,
-    Column("name", String),
-    Column("ingredients", String),
-    Column("url", String),
-    Column("img", String),
-)
-
-class Recipe(Base):
-    __tablename__ = "recipes"
-    name = Column("name", String)
-    ingredients = Column("ingredients", String)
-    url = Column("url", String, primary_key=True)
-    img = Column("img", String)
-
-def __repr__(self):
-    return f'Recipe(name: {self.name}, ingredients: {self.ingredients}, url: {self.url}, img: {self.img}'
-
-metadata.create_all(engine)
-
 def Insert(data: dict):
     for i in data:
         with engine.connect() as conn:
